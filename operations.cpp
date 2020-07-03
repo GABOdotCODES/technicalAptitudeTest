@@ -1,20 +1,20 @@
 #include <node.h>
+using namespace v8;
 
-void Operation(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  v8::Isolate* isolate = args.GetIsolate();
+void operations(const FunctionCallbackInfo<Value>& args) {
+  Isolate* isolate = args.GetIsolate();
 
-  double a = 324.4234, b = 434235.235235;
-  for (int i = 0; i < 100000; i++) {
-    a += b;
-  }
-
-  auto total = v8::Number::New(isolate, a);
+  double value = 0;
   
-  args.GetReturnValue().Set(total);
+  value = args[1].As<Number>()->Value() + args[2].As<Number>()->Value();
+  
+  Local<Number> num = Number::New(isolate, value);
+
+  args.GetReturnValue().Set(value);
 }
 
-void Initialize(v8::Local<v8::Object> exports) {
-  NODE_SET_METHOD(exports, "operations", Operation);
+void Init(Local<Object> exports) {
+  NODE_SET_METHOD(exports, "operations", operations);
 }
 
-NODE_MODULE(addon, Initialize)
+NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
