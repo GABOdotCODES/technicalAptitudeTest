@@ -31,7 +31,6 @@ I was developing a C++ Addon to Node JS, some topics in this test were unknown t
 - **Wait... ¿What's an Addon?**
   Addons are dynamically-linked shared objects written in C++. The require() function can load Addons as ordinary Node.js modules. Addons provide an interface between JavaScript and C/C++ libraries. [more info...](https://nodejs.org/api/addons.html#addons_c_addons)
 - **¿Does that mean...?** Yes, you're right, run C++ code inside NodeJs 🤯 Imagine that performance in a web service 🚀
-- Ok! Let's continue
-  Execute `npm start`
-- You finish!
-  Now, you've a piece of C++ running in <http://localhost:3000/>
+- **Ok! Let's continue**
+- Execute `npm start`
+- **You finish!** Now, you've a piece of C++ running in <http://localhost:3000/>
