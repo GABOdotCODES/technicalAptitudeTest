@@ -7,11 +7,16 @@ const { log, error } = console;
 
 app.get("/help", (_req, res) => {
   res.writeHeader(200, { "Content-Type": "text/html" });
-  res.write(`Visit <a href="${HELP_URL}">this</a> to more info!`);
+  res.write(`
+    Use /calculator/"add" or "subtract"/value1/value2<br><br>
+    Or just click <a href="/calculator/add/1/2">here</a>!<br><br>
+    Visit <a href="${HELP_URL}">this</a> to more info!<br><br>
+    <a href="https://github.com/GABOdotCODES">@GaboDotCodes</a>
+  `);
   res.end();
 });
 
-app.get("/:operation/:termA/:termB", (req, res) => {
+app.get("/calculator/:operation/:termA/:termB", (req, res) => {
   try {
     const { params } = req;
     const { operation } = params;
@@ -28,6 +33,11 @@ app.get("/:operation/:termA/:termB", (req, res) => {
     error(e);
     res.json(e);
   }
+});
+
+app.get("/*", (_req, res) => {
+  res.redirect("/help");
+  res.end();
 });
 
 app.listen(PORT, () => {
