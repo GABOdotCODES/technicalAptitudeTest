@@ -1,6 +1,0 @@
-{
-  "events": {
-    "restart": "node-gyp configure rebuild && direnv allow",
-    "start": "node-gyp configure rebuild && direnv allow"
-  }
-}
