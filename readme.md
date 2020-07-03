@@ -25,6 +25,7 @@ I was developing a C++ Addon to Node JS, some topics in this test were unknown t
 
 (I added `HELP_URL` just to show env vars skill)
 
+- Execute `npm install`
 - Execute `npm i -g node-gyp`
 - **node-gyp** is a cross-platform command-line tool written in Node.js for compiling native addon modules for Node.js) [more info...](https://github.com/nodejs/node-gyp)
 - **Wait... ¿What's an Addon?**
