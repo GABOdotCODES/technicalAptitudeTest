@@ -1,4 +1,5 @@
-const { operations } = require("./build/Release/operations");
+const { add } = require("./build/Release/add");
+const { subtract } = require("./build/Release/subtract");
 const express = require("express");
 const app = express();
 
@@ -20,14 +21,15 @@ app.get("/calculator/:operation/:termA/:termB", (req, res) => {
   try {
     const { params } = req;
     const { operation } = params;
+    const termA = parseFloat(params.termA);
+    const termB = parseFloat(params.termB);
     if (!(operation == "add" || operation == "subtract")) {
       throw "First term must be add or subtract";
     }
-    const termA = parseFloat(params.termA);
-    const termB = parseFloat(params.termB);
     if (isNaN(termA)) throw "Second term must be a Number";
     if (isNaN(termB)) throw "Third term must be a Number";
-    const total = operations(operation, termA, termB);
+    const total =
+      operation === "add" ? add(termA, termB) : subtract(termA, termB);
     res.json(total);
   } catch (e) {
     error(e);
