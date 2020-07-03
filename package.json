@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "direnv allow && clear && nodemon"
+    "start": "node-gyp configure build && node index.js",
+    "dev": "nodemon -e js,cc"
   },
   "repository": {
     "type": "git",
